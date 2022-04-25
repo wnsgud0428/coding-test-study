@@ -1,5 +1,9 @@
 N = int(input())
-exts = {}
+exts = {}  ### 정답지 본 부분:
+"""
+dictionary를 사용한다. 
+왜? 처음짠 코드에서 list.count()함수를 사용할 필요가 없음 => 시간복잡도 감소
+"""
 
 for i in range(N):  # O(N)
     ext = input().split(".")[1]
