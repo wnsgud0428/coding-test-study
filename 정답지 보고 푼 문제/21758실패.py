@@ -3,6 +3,7 @@ place = list(map(int, input().split()))
 place_r = list(reversed(place))
 
 ans = 0  # 최대가 되야함
+
 ### 2케이스 에서 최대 구하기
 max_2 = place[1]
 max_index_2 = 1
@@ -35,15 +36,17 @@ ans = hap
 ### 1번 케이스
 index = 1
 hap = 0
-for i in range(1, len(place) - 3 + 1):
+for i in range(1, len(place) - 3 + 1):  ### !!!여기서 문제가 있는듯..
     a = place[i]
     b = place[i + 1]
     if i + 1 == len(place) - 1:  # 요거 추가했으요
-        break
-    if not (a > 2 * b):
         index = i
         break
-    pass
+    if a >= 2 * b:
+        continue
+    else:
+        index = i
+        break
 
 hap = sum(place[1:]) - place[i] + sum(place[i + 1 :])
 # print("hap", hap)
@@ -56,12 +59,14 @@ hap = 0
 for i in range(1, len(place_r) - 3 + 1):
     a = place_r[i]
     b = place_r[i + 1]
-    if i + 1 == len(place) - 1:
-        break
-    if not (a > 2 * b):
+    if i + 1 == len(place_r) - 1:
         index = i
         break
-    pass
+    if a >= 2 * b:
+        continue
+    else:
+        index = i
+        break
 
 hap = sum(place_r[1:]) - place_r[i] + sum(place_r[i + 1 :])
 # print("hap", hap)
