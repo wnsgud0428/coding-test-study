@@ -37,7 +37,8 @@ def print_array(arr):
     print("=============")
 
 
-def main():
+
+if __name__ == "__main__":
     N = int(input())
     board = []
 
@@ -49,7 +50,3 @@ def main():
     visited = [[False] * N for _ in range(N)]
 
     bfs(Node(0, 0), board, N, visited)
-
-
-if __name__ == "__main__":
-    main()

@@ -1,0 +1,39 @@
+from collections import deque
+
+class Node:
+    def __init__(self, r, c):
+        self.r = r
+        self.c = c
+
+
+
+
+
+# 상, 하, 좌, 우
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
+
+N, M = map(int, input().split())
+board = []
+for _ in range(N):
+    board.append(list(map(int, input().split())))
+visited = [[False]*M for _ in range(N)]
+
+def bfs(start, board, visited):
+    q = deque([start])
+    visited[start.r][start.c] = True
+    print("visit", start.r, start.c)
+    
+    while q:
+        v = q.popleft()
+        for i in range(4):
+            nr = v.r + dr[i]
+            nc = v.c + dc[i]
+            if 0 <= nr <= N-1 and 0 <= nc <= M-1:
+                if board[nr][nc] == 1 and not visited[nr][nc]:
+                    visited[nr][nc] = True
+                    print("visit", nr, nc)
+                    q.append(Node(nr, nc))
+
+
+bfs(Node(0,0), board, visited)
